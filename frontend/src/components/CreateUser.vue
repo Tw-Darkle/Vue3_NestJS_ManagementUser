@@ -65,6 +65,22 @@ const nickName = ref('');
 const age = ref('');
 const tel = ref('');
 
+const resetForm = () => {
+  firstName.value = '';
+  lastName.value = '';
+  nickName.value = '';
+  age.value = '';
+  tel.value = '';
+};
+
+watch(dialog, (newVal) => {
+  console.log(newVal);
+
+  if (!newVal) {
+    resetForm();
+  }
+});
+
 const onSubmit = () => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -101,7 +117,6 @@ const onSubmit = () => {
     })
     .catch((error) => console.error("เกิดข้อผิดพลาดที่การเพิ่มข้อมูล",error));
 
-    fetch()
 
 }
 </script>
